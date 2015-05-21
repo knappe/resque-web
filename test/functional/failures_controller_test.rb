@@ -19,7 +19,7 @@ module ResqueWeb
       it "deletes the failure" do
         Resque::Failure.expects(:remove).with('123')
         visit(:destroy, {:id => 123}, :method => :delete)
-        assert_redirected_to failures_path
+        assert_response(:success, '{success: true}')
       end
     end
 

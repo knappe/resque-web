@@ -1,4 +1,4 @@
-<li>
+<li class="failed-<%= id %>">
   <dl>
     <% if job.nil? %>
     <dt>Error</dt>
@@ -17,9 +17,9 @@
         </div>
       <% else %>
         <div class="controls">
-          <%= link_to "Retry", retry_failure_path(:queue=>failure_queue,:id=>id), :method => :put %>
+          <%= link_to "Retry", retry_failure_path(:queue=>failure_queue,:id=>id), :data => {'job-id' => id }, :method => :put, :class => 'retry' %>
           or
-          <%= link_to "Remove", failure_path(:queue=>failure_queue,:id=>id), :method => :delete %>
+          <%= link_to "Remove", failure_path(:queue=>failure_queue,:id=>id), :data => {'job-id' => id }, :method => :delete, :class => 'remove' %>
         </div>
       <% end %>
     </dd>
